@@ -1,0 +1,62 @@
+# Define an empty list to store tasks
+tasks = []
+
+# Function to add a task to the list
+def add_task():
+    task = input("Enter the task: ")
+    tasks.append(task)
+    print("Task added successfully!")
+
+# Function to display all tasks in the list
+def display_tasks():
+    if not tasks:
+        print("No tasks in the list.")
+    else:
+        print("Tasks:")
+        for i, task in enumerate(tasks, start=1):
+            print(i,".",task)
+
+# Function to mark a task as completed
+def complete_task():
+    display_tasks()
+    task_index = int(input("Enter the index of the task to mark as completed: ")) - 1
+    if 0 <= task_index < len(tasks):
+        print("Completed task: ",tasks.pop(task_index))
+    else:
+        print("Invalid task index!")
+
+# Function to remove a task from the list
+def remove_task():
+    display_tasks()
+    task_index = int(input("Enter the index of the task to remove: ")) - 1
+    if 0 <= task_index < len(tasks):
+        print("Removed task: ",tasks.pop(task_index))
+    else:
+        print("Invalid task index!")
+
+# Main function to run the program
+def main():
+    while True:
+        print("\n1. Add task")
+        print("2. Display tasks")
+        print("3. Mark task as completed")
+        print("4. Remove task")
+        print("5. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            add_task()
+        elif choice == '2':
+            display_tasks()
+        elif choice == '3':
+            complete_task()
+        elif choice == '4':
+            remove_task()
+        elif choice == '5':
+            print("GOOD BYE!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 to 5.")
+
+if __name__ == "__main__":
+    main()
